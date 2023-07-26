@@ -7,12 +7,12 @@ def rollingFunctions(messageContent):
   return number
 
 def tryingRolling(roll):
-    try:
-        num = int(roll)
-        rolled = random.randrange(num)
-        print(rolled)
-    except Exception:
-        print("Failure to get int")
-        rolled = '0'
-    finally:
-        return rolled
+  try:
+    num = int(roll)
+    rolled = random.randrange(num)
+    print(rolled)
+  except Exception:
+    print("Failure to get int")
+    rolled = '0'
+  finally:
+    return rolled

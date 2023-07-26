@@ -2,6 +2,7 @@ import os
 import discord
 import requests
 import json
+import info
 import random
 import rolling
 
@@ -22,7 +23,11 @@ async def on_message(message):
     await message.channel.send('Hello!')
 
   elif message.content.startswith('!info'):
-    messageResponse = "infotest"
+    messageResponse = info.infoResponse(message.content)
+    await message.channel.send(messageResponse)
+
+  elif message.content.startswith('!help'):
+    messageResponse = info.helpResponse(message.content)
     await message.channel.send(messageResponse)
 
   elif message.content.startswith('!roll'):

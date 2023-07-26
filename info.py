@@ -1,9 +1,9 @@
 #just a file for general info and misc responses
 
 def infoResponse(messageContent):
-  textBlock = "This is a placeholder for general info when using !info"
-  return textBlock
+  responseText = "This is a placeholder for general info when using !info"
+  return responseText
 
 def helpResponse(messageContent):
-  textBlock = "Placeholder for a list of different commands that the bot should be capable of doing"
-  return textBlock
+  responseText = "Placeholder for a list of different commands that the bot should be capable of doing"
+  return responseText

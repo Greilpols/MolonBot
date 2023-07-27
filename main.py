@@ -3,6 +3,7 @@ import discord
 import requests
 import json
 import info
+import suggestions
 import random
 import rolling
 
@@ -28,6 +29,10 @@ async def on_message(message):
 
   elif message.content.startswith('!help'):
     messageResponse = info.helpResponse(message.content)
+    await message.channel.send(messageResponse)
+
+  elif message.content.startswith('!suggestion'):
+    messageResponse = suggestions.suggestions(message.content, "add")
     await message.channel.send(messageResponse)
 
   elif message.content.startswith('!roll'):

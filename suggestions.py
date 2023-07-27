@@ -1,7 +1,7 @@
 # Handling file suggestions, adding and just general usage of the suggestions.txt file
 
 def suggestions(messageContent, action):
-  if (action == add):
+  if (action == "add"):
     success = addSuggestion(messageContent)
     return success
 

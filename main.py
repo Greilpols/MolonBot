@@ -24,7 +24,7 @@ async def on_message(message):
     await message.channel.send('Hello!')
 
   elif message.content.startswith('!info'):
-    messageResponse = info.infoResponse(message.content)
+    messageResponse = info.infoResponse(message.content, message.author)
     await message.channel.send(messageResponse)
 
   elif message.content.startswith('!help'):

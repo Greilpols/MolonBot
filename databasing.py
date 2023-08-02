@@ -1,4 +1,5 @@
 from replit import db
+#do I just make make a new variable to have username as string?
 
 def addUser(user):
   if str(user) in db:

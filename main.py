@@ -45,5 +45,9 @@ async def on_message(message):
     databasingResponse = databasing.showScore(message.author)
     await message.channel.send(databasingResponse)
 
+  elif message.content.startswith('!add'):
+    databasingResponse = databasing.add(message.author, 0)
+    await message.channel.send(databasingResponse)
+
 keep_alive()
 client.run(os.getenv('TOKEN'))

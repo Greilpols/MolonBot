@@ -20,3 +20,19 @@ def showScore(user):
     addUser(user)
     return ("Username not found in database. You have now been added. Your score is " + str(db[user]))
   return "Something went terribly wrong. Try again later. If problem persist, pester coder."
+
+def addScore(userName, amount):
+  #add this amount of points to the user
+  try:
+    points = int(amount)
+  except ValueError:
+    return "Error. Value must be a number."
+  except Exception:
+    return "Unknown error. if problem persists, do something else."
+  if userName not in db:
+    return "Error in database handling."
+  elif amount < 0:
+    return "Error. this is only for adding points, use !loss or !subtract instead."
+  else:
+    db[userName] = db[userName] + points
+  return 0

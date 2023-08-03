@@ -35,4 +35,19 @@ def addScore(userName, amount):
     return "Error. this is only for adding points, use !loss or !subtract instead."
   else:
     db[userName] = db[userName] + points
-  return 0
+  return ("Your score is " + str(db[userName]))
+
+def reduce(userName, amount):
+  try:
+    points = int(amount)
+  except ValueError:
+    return "Error. Value must be a number."
+  except Exception:
+    return "Unknown error. if problem persists, do something else."
+  if userName not in db:
+    return "Error in database handling."
+  elif amount < 0:
+    return "Error. this is only for adding points, use !loss or !subtract instead."
+  else:
+    db[userName] = db[userName] + points
+  return ("Your score is " + str(db[userName]))

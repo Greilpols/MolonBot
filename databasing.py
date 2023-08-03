@@ -47,7 +47,7 @@ def reduce(userName, amount):
   if userName not in db:
     return "Error in database handling."
   elif amount < 0:
-    return "Error. this is only for adding points, use !loss or !subtract instead."
+    return "Error. this is only for reducing points, use !add or !winning instead."
   else:
     db[userName] = db[userName] + points
   return ("Your score is " + str(db[userName]))

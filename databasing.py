@@ -1,30 +1,33 @@
 from replit import db
-#do I just make make a new variable to have username as string?
 
-def addUser(user):
-  if str(user) in db:
-    return "user in db"
+def addUser(userName):
+  if userName in db:
+    print ("Error. User already in db. Should have been picked up already.")
+    return "Error.  Something's not working as it should."
   else:
     try:
-      db[str(user)] = 0
+      db[userName] = 0
       return "user added to db"
     except Exception:
       return "user not in db, adding failed"
 
 def showScore(user):
-  print (str(user) + "testforuser")
-  if str(user) in db:
-    print (str(db[user]))
-    return ("Your score is " + db[user])
+  userName = str(user)
+  print (userName + " User requesting showing score.")
+  if userName in db:
+    print (db[userName])
+    return ("Your score is " + str(db[userName]))
   else:
-    addUser(user)
-    return ("Username not found in database. You have now been added. Your score is " + str(db[user]))
+    addUser(userName)
+    return ("Username not found in database. You have now been added. Your score is " + str(db[userName]))
   return "Something went terribly wrong. Try again later. If problem persist, pester coder."
 
-def addScore(userName, amount):
+def addScore(userName, amountText):
   #add this amount of points to the user
   try:
-    points = int(amount)
+    amount = amountText.split(" ")
+    number = amount[1]
+    points = int(number)
   except ValueError:
     return "Error. Value must be a number."
   except Exception:
@@ -37,9 +40,12 @@ def addScore(userName, amount):
     db[userName] = db[userName] + points
   return ("Your score is " + str(db[userName]))
 
-def reduce(userName, amount):
+def reduce(userName, amountText):
+  #remove this amount of points from user
   try:
-    points = int(amount)
+    amount = amountText.split(" ")
+    number = amount[1]
+    points = int(number)
   except ValueError:
     return "Error. Value must be a number."
   except Exception:

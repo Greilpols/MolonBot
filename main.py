@@ -49,7 +49,7 @@ async def on_message(message):
     databasingResponse = databasing.add(message.author, 0)
     await message.channel.send(databasingResponse)
 
-  elif message.content.startswith('reduce'):
+  elif message.content.startswith('!reduce'):
     databasingResponse = databasing.reduce(message.author, 0)
     await message.channel.send(databasingResponse)
 

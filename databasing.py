@@ -24,13 +24,10 @@ def showScore(user):
 
 def addScore(userName, amountText):
   #add this amount of points to the user
-  try:
-    amount = amountText.split(" ")
-    number = amount[1]
-    points = int(number)
-  except ValueError:
-    return "Error. Value must be a number."
-  except Exception:
+  num = checkNumber(amountText)
+  if num == 0:
+    return "Not a number"
+  elif num == "x":
     return "Unknown error. if problem persists, do something else."
   if userName not in db:
     return "Error in database handling."
@@ -42,13 +39,10 @@ def addScore(userName, amountText):
 
 def reduce(userName, amountText):
   #remove this amount of points from user
-  try:
-    amount = amountText.split(" ")
-    number = amount[1]
-    points = int(number)
-  except ValueError:
-    return "Error. Value must be a number."
-  except Exception:
+  num = checkNumber(amountText)
+  if num == 0:
+    return "Not a number"
+  elif num == "x":
     return "Unknown error. if problem persists, do something else."
   if userName not in db:
     return "Error in database handling."
@@ -57,3 +51,15 @@ def reduce(userName, amountText):
   else:
     db[userName] = db[userName] + points
   return ("Your score is " + str(db[userName]))
+
+
+def checkNumber(message):
+  try:
+    splitLine = message.split(" ")
+    number = int(splitLine[1])
+  except ValueError:
+    print("Error. Not a number.")
+    return 0
+  except Exception:
+    return "x"
+  return number

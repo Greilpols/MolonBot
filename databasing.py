@@ -31,8 +31,6 @@ def addScore(userName, amountText):
     return "Unknown error. if problem persists, do something else."
   if userName not in db:
     return "Error in database handling."
-  elif amount < 0:
-    return "Error. this is only for adding points, use !loss or !subtract instead."
   else:
     db[userName] = db[userName] + points
   return ("Your score is " + str(db[userName]))
@@ -46,8 +44,6 @@ def reduce(userName, amountText):
     return "Unknown error. if problem persists, do something else."
   if userName not in db:
     return "Error in database handling."
-  elif amount < 0:
-    return "Error. this is only for reducing points, use !add or !winning instead."
   else:
     db[userName] = db[userName] + points
   return ("Your score is " + str(db[userName]))

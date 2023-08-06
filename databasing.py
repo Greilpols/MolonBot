@@ -35,7 +35,7 @@ def addScore(userName, amountText):
     db[userName] = db[userName] + points
   return ("Your score is " + str(db[userName]))
 
-def reduce(userName, amountText):
+def reduceScore(userName, amountText):
   #remove this amount of points from user
   num = checkNumber(amountText)
   if num == 0:

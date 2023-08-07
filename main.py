@@ -34,7 +34,12 @@ async def on_message(message):
 
   elif message.content.startswith('!suggestion'):
     #need to add what kind of operation for suggestions
+    #aka same as refactor and combine different suggestion
     messageResponse = suggestions.suggestions(message.content, "add")
+    await message.channel.send(messageResponse)
+
+  elif message.content.startswith('!display'):
+    messageResponse = suggestions.display(message.content, "display")
     await message.channel.send(messageResponse)
 
   elif message.content.startswith('!roll'):

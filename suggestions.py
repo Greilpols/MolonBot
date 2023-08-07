@@ -14,3 +14,6 @@ def addSuggestion(messageContent):
     success = "Something went wrong. Please try again later."
   finally:
     return success
+  
+def display(messageContent):
+    return ("Placeholder for displaying suggestions.")

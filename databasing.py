@@ -32,7 +32,7 @@ def addScore(userName, amountText):
   if userName not in db:
     return "Error in database handling."
   else:
-    db[userName] = db[userName] + points
+    db[userName] = db[userName] + num
   return ("Your score is " + str(db[userName]))
 
 def reduceScore(userName, amountText):
@@ -45,7 +45,7 @@ def reduceScore(userName, amountText):
   if userName not in db:
     return "Error in database handling."
   else:
-    db[userName] = db[userName] + points
+    db[userName] = db[userName] + num
   return ("Your score is " + str(db[userName]))
 
 

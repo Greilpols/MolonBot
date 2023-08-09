@@ -3,7 +3,7 @@ from replit import db
 def addUser(userName):
   if userName in db:
     print ("Error. User already in db. Should have been picked up already.")
-    return "Error.  Something's not working as it should."
+    return "Error. Something's not working as it should."
   else:
     try:
       db[userName] = 0
@@ -24,30 +24,31 @@ def showScore(user):
 
 def addScore(userName, amountText):
   #add this amount of points to the user
+  userName = str(userName)
   num = checkNumber(amountText)
   if num == 0:
     return "Not a number"
   elif num == "x":
     return "Unknown error. if problem persists, do something else."
-  if userName not in db:
-    return "Error in database handling."
-  else:
+  if userName in db:
     db[userName] = db[userName] + num
-  return ("Your score is " + str(db[userName]))
+    return ("Your score is " + str(db[userName]))
+  else:
+    return "Error in database handling."
 
 def reduceScore(userName, amountText):
   #remove this amount of points from user
+  userName = str(userName)
   num = checkNumber(amountText)
   if num == 0:
     return "Not a number"
   elif num == "x":
     return "Unknown error. if problem persists, do something else."
-  if userName not in db:
-    return "Error in database handling."
+  if userName in db:
+    db[userName] = db[userName] - num
+    return ("Your score is " + str(db[userName]))
   else:
-    db[userName] = db[userName] + num
-  return ("Your score is " + str(db[userName]))
-
+    return "Error in database handling."
 
 def checkNumber(message):
   try:

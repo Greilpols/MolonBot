@@ -52,11 +52,11 @@ async def on_message(message):
 
   # refactor and combine the different add/reduce etc commands for databasing
   elif message.content.startswith('!add'):
-    databasingResponse = databasing.add(message.author, message.content)
+    databasingResponse = databasing.addScore(message.author, message.content)
     await message.channel.send(databasingResponse)
 
   elif message.content.startswith('!reduce'):
-    databasingResponse = databasing.reduce(message.author, message.content)
+    databasingResponse = databasing.reduceScore(message.author, message.content)
     await message.channel.send(databasingResponse)
 
 keep_alive()

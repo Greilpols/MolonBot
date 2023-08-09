@@ -1,19 +1,26 @@
 # Handling file suggestions, adding and just general usage of the suggestions.txt file
 
-def suggestions(messageContent, action):
+
+def suggestions(messageContent, action, userName):
   if (action == "add"):
     success = addSuggestion(messageContent)
     return success
+  elif (action == "forget"):
+    success = forgetSuggestion(messageContent, userName)
+    return success
+  return 0
+
 
 def addSuggestion(messageContent):
   try:
-    with open("suggestions.txt","a") as f:
-      f.write(messageContent)
-    success = "Suggestion added!"
+    with open("suggestions.txt", "a") as f:
+      f.write(messageContent + "\n")
+    result = "Suggestion added!"
   except Exception:
-    success = "Something went wrong. Please try again later."
+    result = "Something went wrong. Please try again later."
   finally:
-    return success
-  
-def display(messageContent):
-    return ("Placeholder for displaying suggestions.")
+    return result
+
+
+def forgetSuggestion(messageContent, userName):
+  return "placeholder"

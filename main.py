@@ -38,6 +38,10 @@ async def on_message(message):
     messageResponse = suggestions.suggestions(message.content, "add")
     await message.channel.send(messageResponse)
 
+  elif message.content.startwith('!forget'):
+    messageResponse = suggestions.suggestions(message.content, "forget")
+    await message.channel.send("placeholder")
+
   elif message.content.startswith('!display'):
     messageResponse = suggestions.display(message.content, "display")
     await message.channel.send(messageResponse)

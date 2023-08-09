@@ -7,9 +7,8 @@ def infoResponse(messageContent, author):
   #return infoResponse
 
 def helpResponse(messageContent):
-  listedResponses = ["test", "test2", "!help", "!info", "!roll <number>", "!suggestion"]
+  listedResponses = ["test", "test2", "!help", "!info", "!roll <number>", "!suggestion", "!forget", "!score", "!add", "!reduce"]
   #listedResponses = "List of commands: !info, !help, !roll, !points, !suggestion, , "
-  # do we want it to be displayed as a list? Maybe just a string of the items instead?
   textBlock = "Placeholder for a list of different commands that the bot should be capable of doing"
 #  return textBlock
   return listedResponses

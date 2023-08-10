@@ -50,6 +50,10 @@ async def on_message(message):
     messageResponse = rolling.rollingFunctions(message.content)
     await message.channel.send(messageResponse)
 
+  elif message.content.startswith('!deathroll'):
+    messageResponse = rolling.deathRolling(message.content, message.author)
+    await message.channel.send(messageResponse)
+
   elif message.content.startswith('!score'):
     databasingResponse = databasing.showScore(message.author)
     await message.channel.send(databasingResponse)

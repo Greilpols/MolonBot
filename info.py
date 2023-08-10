@@ -7,7 +7,7 @@ def infoResponse(messageContent, author):
   #return infoResponse
 
 def helpResponse(messageContent):
-  listedResponses = ["test", "test2", "!help", "!info", "!roll <number>", "!suggestion", "!forget", "!score", "!add", "!reduce"]
+  listedResponses = ["test", "test2", "!help", "!info", "!roll <number>", "!deathroll <bet value>" "!suggestion", "!score", "!add", "!reduce"]
   #listedResponses = "List of commands: !info, !help, !roll, !points, !suggestion, , "
   textBlock = "Placeholder for a list of different commands that the bot should be capable of doing"
 #  return textBlock

@@ -1,5 +1,6 @@
 # Simply roll random number
 import random
+import databasing
 
 def rollingFunctions(messageContent):
   splitLine = messageContent.split(" ")
@@ -13,6 +14,12 @@ def tryingRolling(roll):
     print(rolled)
   except Exception:
     print("Failure to get int")
-    rolled = '0'
+    rolled = 'x'
   finally:
     return rolled
+
+def deathRolling(roll, userName):
+  result = tryingRolling(roll)
+  #call to database if loss
+  #return comment
+  return "placeholder"

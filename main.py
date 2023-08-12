@@ -7,6 +7,7 @@ import suggestions
 import random
 import rolling
 import databasing
+import silly
 from keep_alive import keep_alive
 
 intents = discord.Intents().all()
@@ -66,6 +67,10 @@ async def on_message(message):
   elif message.content.startswith('!reduce'):
     databasingResponse = databasing.reduceScore(message.author, message.content)
     await message.channel.send(databasingResponse)
+
+  elif message.content.startswith('!silly'):
+    sillyResponse = "Two monkeys."
+    await message.channel.send(sillyResponse)
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

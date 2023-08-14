@@ -3,7 +3,13 @@
 #
 
 from replit import db
+import random
 
 
 def quiz(quizType):
     return "placeholder"
+
+
+def warcraftQuiz():
+    warcraftResponse = db[warcraftQuiz][int(random.randrange(5))]
+    return warcraft

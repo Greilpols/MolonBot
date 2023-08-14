@@ -2,12 +2,15 @@ import os
 import discord
 import requests
 import json
+import time
+
 import info
 import suggestions
 import random
 import rolling
 import databasing
 import silly
+import quiz
 from keep_alive import keep_alive
 
 intents = discord.Intents().all()
@@ -24,6 +27,8 @@ async def on_message(message):
 
   if message.content.startswith('!hello'):
     await message.channel.send('Hello!')
+    time.sleep(2)
+    await message.channel.send('How can I help you?')
 
   elif message.content.startswith('!info'):
     messageResponse = info.infoResponse(message.content, message.author)

@@ -5,5 +5,5 @@
 from replit import db
 
 
-def quiz():
+def quiz(quizType):
     return "placeholder"

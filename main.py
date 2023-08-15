@@ -81,13 +81,13 @@ async def on_message(message):
     #placeholder quiztype for testing stuffs:
     quizType = 'warcraft'
     quizResponse = quiz.quiz(quizType)
-    await message.channel.send(quizResponse[0])
+    await message.channel.send(quizResponse[1])
     time.sleep(5)
-    await message.channel.send("The correct answer is " + str(quizResponse[1]))
+    await message.channel.send("The correct answer is " + str(quizResponse[2]))
     #how to check and set up checking correct answers on quiz? Will have to check and smooth out.
 
   elif message.content.startswith('!next'):
-    quizResponse = quiz.next()
+    quizResponse = quiz.nextQuestion()
     await message.channel.send(quizResponse[0])
     time.sleep(5)
     await message.channel.send("The correct answer is " + str(quizResponse[1]))

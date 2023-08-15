@@ -7,9 +7,13 @@ import random
 
 
 def quiz(quizType):
-    return "placeholder"
+    if quizType == warcraft:
+        quizResponse = warcraftQuiz
+    return quizResponse
 
 
 def warcraftQuiz():
-    warcraftResponse = db[warcraftQuiz][int(random.randrange(5))]
-    return warcraft
+    randomNumber = random.randrange(5)
+    warcraftResponse = [db[warcraft_Quiz][randomNumber], db[warcraft_QuizAnswers][randomNumber]]
+
+    return warcraftResponse

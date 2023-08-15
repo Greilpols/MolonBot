@@ -78,10 +78,12 @@ async def on_message(message):
     await message.channel.send(sillyResponse)
 
   elif message.content.startswith('!quiz'):
-    #placeholder quiztype:
+    #placeholder quiztype for testing stuffs:
     quizType = 'warcraft'
     quizResponse = quiz.quiz(quizType)
-    await message.channel.send(quizResponse)
+    await message.channel.send(quizResponse[0])
+    time.sleep(5)
+    await message.channel.send("The correct answer is " + str(quizResponse[1]))
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

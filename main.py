@@ -84,6 +84,13 @@ async def on_message(message):
     await message.channel.send(quizResponse[0])
     time.sleep(5)
     await message.channel.send("The correct answer is " + str(quizResponse[1]))
+    #how to check and set up checking correct answers on quiz? Will have to check and smooth out.
+
+  elif message.content.startswith('!next'):
+    quizResponse = quiz.next()
+    await message.channel.send(quizResponse[0])
+    time.sleep(5)
+    await message.channel.send("The correct answer is " + str(quizResponse[1]))
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

@@ -7,7 +7,7 @@ import random
 
 quizType = 'Uninitialized'
 quizCounter = 0
-quizQuestionsAsked = []
+quizQuestionsNotAsked = []
 
 #reseting all details of the quiz before starting
 def quiz(quizTypeToStart):
@@ -15,8 +15,10 @@ def quiz(quizTypeToStart):
   quizCounter = 0
   global quizType
   quizType = quizTypeToStart
-  global quizQuestionsAsked
-  quizQuestionsAsked = []
+  global quizQuestionsNotAsked
+  quizQuestionsNotAsked = []
+  for i in db[quizType]:
+    quizQuestionsNotAsked.append(i-1) #should give 0->n in list, no? Doublecheck..
   return ("Now starting a quiz of the " + quizType + " variety!")
 
 def nextQuestion():

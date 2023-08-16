@@ -34,10 +34,9 @@ def nextQuestion():
   return warcraftResponse
 
 def warcraftQuiz():
-    randomNumber = random.randrange(5)
-    quizType = "Warcraft"
-    quizCounter += 1
-    warcraftResponse = ["This will start a World of Warcraft quiz!", db[warcraft_Quiz][randomNumber], db[warcraft_QuizAnswers][randomNumber]]
-    print (quizCounter)
+  randomNumber = random.randrange(5)
+  quizType = "Warcraft"
+  warcraftResponse = ["This will start a World of Warcraft quiz!", db[warcraft_Quiz][randomNumber], db[warcraft_QuizAnswers][randomNumber]]
+  print (quizCounter)
 
-    return warcraftResponse
+  return warcraftResponse

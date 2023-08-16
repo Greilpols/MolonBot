@@ -5,17 +5,24 @@
 from replit import db
 import random
 
-quizType = "Nothing"
+quizType = 'Uninitialized'
 quizCounter = 0
+quizQuestionsAsked = []
 
-def quiz(quizType):
-    if quizType == warcraft:
-        quizResponse = warcraftQuiz
-    return quizResponse
+#reseting all details of the quiz before starting
+def quiz(quizTypeToStart):
+  global quizCounter
+  quizCounter = 0
+  global quizType
+  quizType = quizTypeToStart
+  global quizQuestionsAsked
+  quizQuestionsAsked = []
+  return ("Now starting a quiz of the " + quizType + " variety!")
 
 def nextQuestion():
     #for next question, so keep continuing on the same quiz
     randomNumber = random.randrange(5)
+
     warcraftResponse = [db[warcraft_Quiz][randomNumber], db[warcraft_QuizAnswers][randomNumber]]
 
     return warcraftResponse

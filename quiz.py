@@ -25,9 +25,9 @@ def nextQuestion():
   #for next question, so keep continuing on the same quiz
   global quizCounter
   quizCounter += 1
-  randomNumber = random.randrange(5) #temp value for testing - WIP change number to num of q's available
-  global quizQuestionsAsked
-  quizQuestionsAsked.append(randomNumber)
+  global quizQuestionsNotAsked
+  randomNumber = random.choice(quizQuestionsNotAsked) #temp value for testing - WIP change number to num of q's available
+  quizQuestionsNotAsked.pop(randomNumber)
   if quizType == "Uninitialized":
     return ["No quiz type started. write !quiz <type> to start one"]
 

@@ -14,12 +14,12 @@ def quiz(quizTypeToStart):
   global quizCounter
   quizCounter = 0
   global quizType
-  quizType = quizTypeToStart
+  quizType = (quizTypeToStart + "_Quiz")
   global quizQuestionsNotAsked
   quizQuestionsNotAsked = []
   for i in db[quizType]:
     quizQuestionsNotAsked.append(i-1) #should give 0->n in list, no? Doublecheck..
-  return ("Now starting a quiz of the " + quizType + " variety!")
+  return ("Now starting a quiz of the " + quizTypeToStart + " variety!")
 
 def nextQuestion():
   #for next question, so keep continuing on the same quiz

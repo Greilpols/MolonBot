@@ -42,3 +42,14 @@ def warcraftQuiz():
   print (quizCounter)
 
   return warcraftResponse
+
+def addToQuiz(question, answer):
+  global quizType
+  if quizType == "Uninitialized":
+    return "Error: Quiztype uninitialized."
+  quizTypeAnswers = quizType + "Answers"
+  db[quizType].append(question)
+  db[quizTypeAnswers].append(answer)
+  return ((question) + " has been added as a question and " + (answer) + " as the answer to the quiz of " + (quizType))
+  
+  

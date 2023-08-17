@@ -30,10 +30,9 @@ def nextQuestion():
   quizQuestionsNotAsked.pop(randomNumber)
   if quizType == "Uninitialized":
     return ["No quiz type started. write !quiz <type> to start one"]
-
-  warcraftResponse = [db[warcraft_Quiz][randomNumber], db[warcraft_QuizAnswers][randomNumber]]
-
-  return warcraftResponse
+  nextQuestion[0] = db[quizType][randomNumber]
+  nextQuestion[1] = db[(quizType)+"Answer"][randomNumber]
+  return nextQuestion
 
 def warcraftQuiz():
   randomNumber = random.randrange(5)

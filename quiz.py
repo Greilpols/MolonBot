@@ -34,14 +34,6 @@ def nextQuestion():
   nextQuestion[1] = db[(quizType)+"Answer"][randomNumber]
   return nextQuestion
 
-def warcraftQuiz():
-  randomNumber = random.randrange(5)
-  quizType = "Warcraft"
-  warcraftResponse = ["This will start a World of Warcraft quiz!", db[warcraft_Quiz][randomNumber], db[warcraft_QuizAnswers][randomNumber]]
-  print (quizCounter)
-
-  return warcraftResponse
-
 def addToQuiz(question, answer):
   global quizType
   if quizType == "Uninitialized":
@@ -50,5 +42,3 @@ def addToQuiz(question, answer):
   db[quizType].append(question)
   db[quizTypeAnswers].append(answer)
   return ((question) + " has been added as a question and " + (answer) + " as the answer to the quiz of " + (quizType))
-  
-  

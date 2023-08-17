@@ -16,6 +16,8 @@ from keep_alive import keep_alive
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
 
+#just a few variables to be held in program
+
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
@@ -78,12 +80,9 @@ async def on_message(message):
     await message.channel.send(sillyResponse)
 
   elif message.content.startswith('!quiz'):
-    #placeholder quiztype for testing stuffs:
     quizType = 'warcraft'
     quizResponse = quiz.quiz(quizType)
-    await message.channel.send(quizResponse[1])
-    time.sleep(5)
-    await message.channel.send("The correct answer is " + str(quizResponse[2]))
+    await message.channel.send(quizResponse)
     #how to check and set up checking correct answers on quiz? Will have to check and smooth out.
 
   elif message.content.startswith('!next'):

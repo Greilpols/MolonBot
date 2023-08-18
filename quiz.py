@@ -42,3 +42,19 @@ def addToQuiz(question, answer):
   db[quizType].append(question)
   db[quizTypeAnswers].append(answer)
   return ((question) + " has been added as a question and " + (answer) + " as the answer to the quiz of " + (quizType))
+  
+def removeFromQuiz(messageContent):
+  try:
+    splitLine = messageContent.split(" ")
+    number = int(splitLine[1])
+  except ValueError:
+    return "Error. Not a number of a question to remove. Please put number of question to remove."
+  except Exception:
+    return "Unknown error. Please add what went wrong as a suggestion."
+  global quizType
+  if quizType == "Uninitialized":
+    return "Error: Quiztype uninitialized."
+  quizTypeAnswers = quizType + "Answers"
+  db[quizType].pop(number)
+  db[quizTypeAnswers].append(number)
+  return ("Question has been removed as a question and as the answer to the quiz of " + (quizType))

@@ -91,5 +91,9 @@ async def on_message(message):
     time.sleep(5)
     await message.channel.send("The correct answer is " + str(quizResponse[1]))
 
+  elif message.content.startswitch('!removequiz'):
+    quizResponse = quiz.removeFromQuiz(message.content)
+    await message.channel.send(quizResponse)
+
 keep_alive()
 client.run(os.getenv('TOKEN'))

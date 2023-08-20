@@ -2,6 +2,8 @@
 import random
 import databasing
 
+currentGames = []
+
 def rollingFunctions(messageContent):
   splitLine = messageContent.split(" ")
   number = tryingRolling(splitLine[1])
@@ -26,6 +28,7 @@ def deathRolling(roll, userName):
   result = tryingRolling(roll)
   #call to database if loss
   #return comment
+  global currentGames #use to set up names of players of games etc
   points = 100 #temp while deciding how to hold orig num... just use a list or summit? only want ganes to be temp after all
   gameWinner = "placeholderman"
   if result == 0:

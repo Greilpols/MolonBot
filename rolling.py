@@ -12,10 +12,13 @@ def tryingRolling(roll):
     num = int(roll)
     rolled = random.randrange(num)
     print(rolled)
-  except Exception:
+  except ValueError:
     #if failed to get number, just /roll 100
     print("Failure to get int")
     rolled = random.randrange(100)
+  except Exception:
+    print("Error, something went wrong.") #need better errorhandling here
+    return random.randrange(100)
   finally:
     return rolled
 

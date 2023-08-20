@@ -47,6 +47,7 @@ def removeFromQuiz(messageContent):
   try:
     splitLine = messageContent.split(" ")
     number = int(splitLine[1])
+    number = number - 1
   except ValueError:
     return "Error. Not a number of a question to remove. Please put number of question to remove."
   except Exception:

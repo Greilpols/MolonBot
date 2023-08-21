@@ -75,8 +75,8 @@ async def on_message(message):
     databasingResponse = databasing.reduceScore(message.author, message.content)
     await message.channel.send(databasingResponse)
 
-  elif message.content.startswith('!silly'):
-    sillyResponse = "Two monkeys."
+  elif message.content.startswith('!silly' or '!joke'):
+    sillyResponse = silly.silly(message.content.split(" ")[0])
     await message.channel.send(sillyResponse)
 
   elif message.content.startswith('!quiz'):

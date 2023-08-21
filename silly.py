@@ -1,7 +1,7 @@
 import random
 
 def silly(amusementType):
-  if (amusementType == 'joke'):
+  if (amusementType == '!joke'):
     try:
       with open("silly.txt", "r") as f:
         jokes = f.readlines()

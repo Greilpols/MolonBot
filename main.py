@@ -80,8 +80,7 @@ async def on_message(message):
     await message.channel.send(sillyResponse)
 
   elif message.content.startswith('!quiz'):
-    quizType = 'warcraft'
-    quizResponse = quiz.quiz(quizType)
+    quizResponse = quiz.quiz(message.content)
     await message.channel.send(quizResponse)
     #how to check and set up checking correct answers on quiz? Will have to check and smooth out.
 

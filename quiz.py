@@ -10,7 +10,8 @@ quizCounter = 0
 quizQuestionsNotAsked = []
 
 #reseting all details of the quiz before starting
-def quiz(quizTypeToStart):
+def quiz(quizTypeToStartContent):
+  quizTypeToStart = quizTypeToStartContent.split(" ")[1] #Hmm, needs testing to see if needs to check if the quizzes exist/have enough questions or if works fine
   global quizCounter
   quizCounter = 0
   global quizType

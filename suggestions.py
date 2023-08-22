@@ -32,4 +32,6 @@ def forgetSuggestion(messageContent, userName):
           pass
         else:
           f.write(line) #this needs testing before implementing: fear is it might just overwrite without copying all lines etc
-  return "placeholder"
+          return ("Suggestions by " + userName + " has been removed.")
+  except Exception:
+    return "placeholder"

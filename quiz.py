@@ -48,7 +48,7 @@ def removeFromQuiz(messageContent):
   try:
     splitLine = messageContent.split(" ")
     number = int(splitLine[1])
-    number = number - 1
+    number = number - 1 #for indexing
   except ValueError:
     return "Error. Not a number of a question to remove. Please put number of question to remove."
   except Exception:
@@ -56,7 +56,10 @@ def removeFromQuiz(messageContent):
   global quizType
   if quizType == "Uninitialized":
     return "Error: Quiztype uninitialized."
-  quizTypeAnswers = quizType + "Answers"
-  db[quizType].pop(number)
-  db[quizTypeAnswers].append(number)
-  return ("Question has been removed as a question and as the answer to the quiz of " + (quizType))
+  try:
+    quizTypeAnswers = quizType + "Answers"
+    db[quizType].pop(number)
+    db[quizTypeAnswers].append(number)
+    return ("Question has been removed as a question and as the answer to the quiz of " + (quizType))
+  except Exception:
+    return ("Error removing question from Quiz.")

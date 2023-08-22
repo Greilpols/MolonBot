@@ -3,7 +3,7 @@
 
 def suggestions(messageContent, action, userName):
   if (action == "add"):
-    success = addSuggestion(messageContent)
+    success = addSuggestion(messageContent, userName)
     return success
   elif (action == "forget"):
     success = forgetSuggestion(messageContent, userName)
@@ -11,11 +11,12 @@ def suggestions(messageContent, action, userName):
   return 0
 
 
-def addSuggestion(messageContent):
+def addSuggestion(messageContent, userName):
   try:
     with open("suggestions.txt", "a") as f:
-      f.write(messageContent + "\n")
+      f.write(userName + messageContent + "\n")
     result = "Suggestion added!"
+    f.closed
   except Exception:
     result = "Something went wrong. Please try again later."
   finally:
@@ -23,4 +24,12 @@ def addSuggestion(messageContent):
 
 
 def forgetSuggestion(messageContent, userName):
+  try:
+    with open("suggestions.txt", "rw") as f:
+      suggestText = f.read()
+      for line in suggestText:
+        if line.startswith(userName):
+          pass
+        else:
+          f.write(line) #this needs testing before implementing: fear is it might just overwrite without copying all lines etc
   return "placeholder"

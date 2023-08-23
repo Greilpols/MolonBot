@@ -11,6 +11,7 @@ import rolling
 import databasing
 import silly
 import quiz
+import timeAlarmReminder
 from keep_alive import keep_alive
 
 intents = discord.Intents().all()
@@ -41,11 +42,11 @@ async def on_message(message):
   elif message.content.startswith('!suggestion'):
     #need to add what kind of operation for suggestions
     #aka same as refactor and combine different suggestion
-    messageResponse = suggestions.suggestions(message.content, "add")
+    messageResponse = suggestions.suggestions(message.content, "add", message.author)
     await message.channel.send(messageResponse)
 
   elif message.content.startswith('!forget'):
-    messageResponse = suggestions.suggestions(message.content, "forget")
+    messageResponse = suggestions.suggestions(message.content, "forget", message.author)
     await message.channel.send("placeholder")
 
   elif message.content.startswith('!display'):
@@ -91,6 +92,10 @@ async def on_message(message):
   elif message.content.startswith('!removequiz'):
     quizResponse = quiz.removeFromQuiz(message.content)
     await message.channel.send(quizResponse)
+
+  elif message.content.startswith('!timer' or '!reminder' or '!schedule'):
+    timeResponse = timeAlarmReminder.botTiming(message.content)
+    await message.channel.send(timeResponse)
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

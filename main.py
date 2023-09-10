@@ -3,6 +3,7 @@ import discord
 import requests
 import json
 import time
+import threading
 
 import info
 import suggestions
@@ -93,9 +94,12 @@ async def on_message(message):
     quizResponse = quiz.removeFromQuiz(message.content)
     await message.channel.send(quizResponse)
 
-  elif message.content.startswith('!timer' or '!reminder' or '!schedule'):
+  elif message.content.startswith('!timer' or '!reminder' or '!schedule'): # do we just thread the whole thing?
     timeResponse = timeAlarmReminder.botTiming(message.content)
+    alarmThread = threading.Timer(10.0, await message.channel.send("TIMER BE UP"))
     await message.channel.send(timeResponse)
+    alarmThread.start()
+    
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

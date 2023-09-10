@@ -4,6 +4,7 @@ import requests
 import json
 import time
 import threading
+import asyncio
 
 import info
 import suggestions
@@ -94,12 +95,11 @@ async def on_message(message):
     quizResponse = quiz.removeFromQuiz(message.content)
     await message.channel.send(quizResponse)
 
-  elif message.content.startswith('!timer' or '!reminder' or '!schedule'): # do we just thread the whole thing?
+  elif message.content.startswith('!timer' or '!reminder' or '!schedule'): # do we just thread the whole thing? Seems asyncio is the way to go!
     timeResponse = timeAlarmReminder.botTiming(message.content)
-    alarmThread = threading.Timer(10.0, await message.channel.send("TIMER BE UP"))
     await message.channel.send(timeResponse)
-    alarmThread.start()
-    
+    await asyncio.sleep(10)
+    await message.channel.send(timeAlarmReminder.timerTest())
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

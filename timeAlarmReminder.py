@@ -2,11 +2,18 @@
 
 import datetime
 import time
-
+import threading
 
 def botTiming(messageContent): #'!timer' or '!reminder' or '!schedule'
   print(datetime.datetime.now())
-  time.sleep(30) #test
-  #nah need a better way than this...
+  print("testTimerThing")
+  return "Timer has been placed for 10s"
+
+def testFunct():
+  print("preprint")
   print(datetime.datetime.now())
-  return "placeholder"
+  print("infunct")
+  return "Bob"
+
+def timerTest():
+  return "Timer is up"

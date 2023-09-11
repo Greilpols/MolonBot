@@ -88,7 +88,7 @@ async def on_message(message):
   elif message.content.startswith('!next'):
     quizResponse = quiz.nextQuestion()
     await message.channel.send(quizResponse[0])
-    time.sleep(5)
+    await asyncio.sleep(10)
     await message.channel.send("The correct answer is " + str(quizResponse[1]))
 
   elif message.content.startswith('!removequiz'):
@@ -96,10 +96,12 @@ async def on_message(message):
     await message.channel.send(quizResponse)
 
   elif message.content.startswith('!timer' or '!reminder' or '!schedule'): # do we just thread the whole thing? Seems asyncio is the way to go!
-    timeResponse = timeAlarmReminder.botTiming(message.content)
+    timeResponse = timeAlarmReminder.botTiming(message.content, message.author)
+    if timeResponse[0] == 1:
+      print("test")
     await message.channel.send(timeResponse)
     await asyncio.sleep(10)
-    await message.channel.send(timeAlarmReminder.timerTest())
+    await message.channel.send(timeAlarmReminder.timerPoke(message.author))
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

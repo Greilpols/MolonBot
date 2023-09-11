@@ -5,15 +5,18 @@ import time
 import threading
 
 def botTiming(messageContent): #'!timer' or '!reminder' or '!schedule'
-  print(datetime.datetime.now())
-  print("testTimerThing")
-  return "Timer has been placed for 10s"
+  splitLine = messageContent.split(" ")
+  timerLength = splitLine[1]
+  try:
+    response = ["test", "123"]
+    print(datetime.datetime.now())
+    return "Timer has been placed for 10s"
+  except ValueError:
+    return "Error. NAN"
+  except Exception:
+    return "Error. Something went wrong."
+  finally:
+    return "Unexpected outcome. Error that should be accessible."
 
-def testFunct():
-  print("preprint")
-  print(datetime.datetime.now())
-  print("infunct")
-  return "Bob"
-
-def timerTest():
-  return "Timer is up"
+def timerPoke(author):
+  return ("Hey @" + author + "! Timer is up!")

@@ -4,11 +4,13 @@ import datetime
 import time
 import threading
 
-def botTiming(messageContent): #'!timer' or '!reminder' or '!schedule'
+def botTiming(messageContent, author): #'!timer' or '!reminder' or '!schedule'
   splitLine = messageContent.split(" ")
-  timerLength = splitLine[1]
   try:
-    response = ["test", "123"]
+    timerLength = int(splitLine[1])
+    if timerLength > 301 or timerLength < 1:
+      return "Error. Timer must be of appropriate length."
+    response = [1, timerLength, author] #fix to be able to choose target
     print(datetime.datetime.now())
     return "Timer has been placed for 10s"
   except ValueError:

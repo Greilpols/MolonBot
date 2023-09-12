@@ -108,13 +108,9 @@ async def on_message(message):
       await message.channel.send(timeResponse[1])
       asyncio.sleep(timeResponse[3])
       await message.channel.send(timeAlarmReminder.timerPoke(timeResponse[2]))
-    elif timeResponse[0] == 3:
-      print ("test3")
     else:
-      print ("testnan")
-    #await message.channel.send(timeResponse)
-    #await asyncio.sleep(10)
-    #await message.channel.send(timeAlarmReminder.timerPoke(message.author))
+      print ("WTF happened?")
+      await message.channel.send("Something went very wrong. Timer sadly not working at the moment.")
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

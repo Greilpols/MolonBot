@@ -104,7 +104,7 @@ async def on_message(message):
       await message.channel.send(timeResponse[1])
     elif timeResponse[0] == 2:
       await message.channel.send(timeResponse[1])
-      asyncio.sleep(timeResponse[3])
+      await asyncio.sleep(timeResponse[3])
       await message.channel.send(timeAlarmReminder.timerPoke(timeResponse[2]))
     else:
       await message.channel.send("Something went very wrong. Timer sadly not working at the moment.")

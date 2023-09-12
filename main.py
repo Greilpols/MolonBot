@@ -100,16 +100,13 @@ async def on_message(message):
     test12334 = timeResponse[0]
     #figure out why switches refuse to work here
 #timeresponse = [enum, text, pokes, timedelay]
-    if timeResponse[0] == 1:
-      print("test1")
+    if timeResponse[0] == 1: #some error
       await message.channel.send(timeResponse[1])
     elif timeResponse[0] == 2:
-      print ("test2")
       await message.channel.send(timeResponse[1])
       asyncio.sleep(timeResponse[3])
       await message.channel.send(timeAlarmReminder.timerPoke(timeResponse[2]))
     else:
-      print ("WTF happened?")
       await message.channel.send("Something went very wrong. Timer sadly not working at the moment.")
 
 keep_alive()

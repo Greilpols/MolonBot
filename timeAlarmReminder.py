@@ -15,8 +15,8 @@ def botTiming(messageContent, author): #'!timer' or '!reminder' or '!schedule'
     return [1, "Error. Number did not get extracted properly."]
   except Exception:
     return [1, "Error. Something unknown went wrong."]
-  finally:
-    return [1, "Unexpected outcome. Error that should not be accessible. Please poke me and tell me how you got this."]
+  #finally:
+  #  return [1, "Unexpected outcome. Error that should not be accessible. Please poke me and tell me how you got this."]
 
 def timerPoke(author):
-  return ("Hey @" + author + "! Timer is up!")
+  return ("Hey @" + str(author) + "! Timer is up!")

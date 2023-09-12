@@ -9,16 +9,16 @@ def botTiming(messageContent, author): #'!timer' or '!reminder' or '!schedule'
   try:
     timerLength = int(splitLine[1])
     if timerLength > 301 or timerLength < 1:
-      return "Error. Timer must be of appropriate length."
-    response = [1, timerLength, author] #fix to be able to choose target
+      return [1, "Error. Timer must be of appropriate length."]
+    #fix to be able to choose target
     print(datetime.datetime.now())
-    return "Timer has been placed for 10s"
+    return [2, ("Timer has been placed for " + str(timerLength) + " seconds"), author, timerLength]
   except ValueError:
     return "Error. NAN"
   except Exception:
     return "Error. Something went wrong."
   finally:
-    return "Unexpected outcome. Error that should be accessible."
+    return "Unexpected outcome. Error that should not be accessible."
 
 def timerPoke(author):
   return ("Hey @" + author + "! Timer is up!")

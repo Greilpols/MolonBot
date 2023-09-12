@@ -97,11 +97,24 @@ async def on_message(message):
 
   elif message.content.startswith('!timer' or '!reminder' or '!schedule'): # do we just thread the whole thing? Seems asyncio is the way to go!
     timeResponse = timeAlarmReminder.botTiming(message.content, message.author)
+    test12334 = timeResponse[0]
+    #figure out why switches refuse to work here
+#timeresponse = [enum, text, pokes, timedelay]
     if timeResponse[0] == 1:
-      print("test")
-    await message.channel.send(timeResponse)
-    await asyncio.sleep(10)
-    await message.channel.send(timeAlarmReminder.timerPoke(message.author))
+      print("test1")
+      await message.channel.send(timeResponse[1])
+    elif timeResponse[0] == 2:
+      print ("test2")
+      await message.channel.send(timeResponse[1])
+      asyncio.sleep(timeResponse[3])
+      await message.channel.send(timeAlarmReminder.timerPoke(timeResponse[2]))
+    elif timeResponse[0] == 3:
+      print ("test3")
+    else:
+      print ("testnan")
+    #await message.channel.send(timeResponse)
+    #await asyncio.sleep(10)
+    #await message.channel.send(timeAlarmReminder.timerPoke(message.author))
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

@@ -76,7 +76,7 @@ async def on_message(message):
     databasingResponse = databasing.reduceScore(message.author, message.content)
     await message.channel.send(databasingResponse)
 
-  elif message.content.startswith('!silly' or '!joke'):
+  elif message.content.startswith('!silly') or message.content.startswith('!joke'):
     sillyResponse = silly.silly(message.content.split(" ")[0])
     await message.channel.send(sillyResponse)
 
@@ -95,7 +95,7 @@ async def on_message(message):
     quizResponse = quiz.removeFromQuiz(message.content)
     await message.channel.send(quizResponse)
 
-  elif message.content.startswith('!timer' or '!reminder' or '!schedule'): # do we just thread the whole thing? Seems asyncio is the way to go!
+  elif message.content.startswith('!timer') or message.content.startswith('!reminder') or message.content.startswith('!schedule'): # do we just thread the whole thing? Seems asyncio is the way to go!
     timeResponse = timeAlarmReminder.botTiming(message.content, message.author)
     test12334 = timeResponse[0]
     #figure out why switches refuse to work here

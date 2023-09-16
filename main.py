@@ -77,7 +77,7 @@ async def on_message(message):
     await message.channel.send(databasingResponse)
 
   elif message.content.startswith('!silly') or message.content.startswith('!joke'):
-    sillyResponse = silly.silly(message.content)
+    sillyResponse = silly.silly(message.content, message.author)
     await message.channel.send(sillyResponse)
 
   elif message.content.startswith('!quiz'):

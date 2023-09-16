@@ -1,17 +1,17 @@
 import random
 
-def silly(amusementMessage):
+def silly(amusementMessage, author):
   amusementType = amusementMessage.split(" ")[0]
   if (amusementType == '!joke'):
     try:
       if amusementMessage.split(" ")[1] == add:
         with open("silly.txt", "a") as f:
-          f.write(userName + messageContent + "\n")
+          f.write(messageContent + " - " + author + "\n")
         result = "Joke added!"
         f.closed
         return result
     except Exception:
-      print(amusementMessage)
+      print(amusementMessage, author)
     try:
       with open("silly.txt", "r") as f:
         jokes = f.readlines()

@@ -4,7 +4,11 @@ def silly(amusementMessage, author):
   amusementType = amusementMessage.split(" ")[0]
   if (amusementType == '!joke'):
     try:
-      if amusementMessage.split(" ")[1] == add:
+      if amusementMessage.split(" ")[1] == 'add':
+        messageContent = amusementMessage.split(" ")
+        messageContent.pop(0)
+        messageContent.pop(0)
+        joke = ' '.join(messageContent)
         with open("silly.txt", "a") as f:
           f.write(messageContent + " - " + author + "\n")
         result = "Joke added!"

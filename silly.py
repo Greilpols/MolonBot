@@ -15,8 +15,8 @@ def silly(amusementMessage, author):
     try:
       with open("silly.txt", "r") as f:
         jokes = f.readlines()
-        fileSize=len([0 for _ in f])
-        joke = jokes[int(random.randrange(fileSize))]
+        fileLength = len(jokes)
+        joke = jokes[random.randrange(fileLength)]
       return joke
     except Exception:
       result = "Something went wrong. Please try again later."

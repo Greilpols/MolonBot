@@ -5,14 +5,17 @@ def silly(amusementMessage, author):
   if (amusementType == '!joke'):
     try:
       if amusementMessage.split(" ")[1] == 'add':
-        messageContent = amusementMessage.split(" ")
-        messageContent.pop(0)
-        messageContent.pop(0)
-        addedJoke = " ".join(messageContent)
-        with open("silly.txt", "a") as f:
-          f.write("\n" + addedJoke + " - " + str(author))
-        f.close()
-        return "Joke added!"
+        try:
+          messageContent = amusementMessage.split(" ")
+          messageContent.pop(0)
+          messageContent.pop(0)
+          addedJoke = " ".join(messageContent)
+          with open("silly.txt", "a") as f:
+            f.write("\n" + addedJoke + " - " + str(author))
+          f.close()
+          return "Joke added!"
+        except Exception:
+          return "Attempted joke adding failed. Apparently not funny enough. Try again later."
       else:
         return printJoke()
     except Exception:

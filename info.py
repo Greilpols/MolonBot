@@ -5,4 +5,9 @@ def infoResponse(messageContent, author):
 
 def helpResponse(messageContent):
   return ("!info, !help, !roll <number>, !deathroll <bet value>, !suggestion, !score, !add, !reduce, !joke, !timer, !schedule (and more, it is WIP after all)")
-  return listedResponses
+
+def placeholder(test)
+  if test == ''
+  '''
+  !info, !help, !roll <number>, !deathroll <bet value>, !suggestion, !score, !add, !reduce, !joke, !timer, !schedule
+  '''

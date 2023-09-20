@@ -8,22 +8,25 @@ def silly(amusementMessage, author):
         messageContent = amusementMessage.split(" ")
         messageContent.pop(0)
         messageContent.pop(0)
-        joke = ' '.join(messageContent)
+        addedJoke = " ".join(messageContent)
         with open("silly.txt", "a") as f:
-          f.write(messageContent + " - " + author + "\n")
-        result = "Joke added!"
-        f.closed
-        return result
+          f.write("\n" + addedJoke + " - " + str(author))
+        f.close()
+        return "Joke added!"
+      else:
+        return printJoke()
     except Exception:
-      print(amusementMessage, author)
-    try:
-      with open("silly.txt", "r") as f:
-        jokes = f.readlines()
-        fileLength = len(jokes)
-        joke = jokes[random.randrange(fileLength)]
-      return joke
-    except Exception:
-      result = "Something went wrong. Please try again later."
-    return result
+      return printJoke()
   else:
     return "mirror"
+
+
+def printJoke():
+  try:
+    with open("silly.txt", "r") as f:
+      jokes = f.readlines()
+      fileLength = len(jokes)
+      joke = jokes[random.randrange(fileLength)]
+    return joke
+  except Exception:
+    return"Something went wrong. Please try again later."

@@ -16,11 +16,11 @@ def helpResponse(helpType):
       elif message == '!help':
         return '!help message'
       elif message == '!roll':
-        return '!roll message'
+        return 'Roll: !roll <number>, to get a number between 0 and <number>. If no <number>, defaults to 100.'
       elif message == '!deathroll':
         return '!deathroll message'
       elif message == '!suggestion':
-        return '!suggestion message'
+        return 'Suggestion: !suggestion <message>, to add a message as suggestion for further improvements.'
       elif message == '!score':
         return '!score message'
       elif message == '!add':
@@ -28,9 +28,9 @@ def helpResponse(helpType):
       elif message == '!reduce':
         return '!reduce message'
       elif message == '!joke':
-        return '!joke message'
+        return 'Joke: !joke, to get a random joke given. You can add jokes to the joke database with !joke add <joke>.'
       elif message == '!timer':
-        return '!timer message'
+        return 'Timer: !timer <time> <user>, to add a timer before you get a message poke. <user> defaults to self if no other given. <time> must be between 1 and 300. Counted in seconds.'
       elif message == 'schedule':
         return '!schedule message'
       else:

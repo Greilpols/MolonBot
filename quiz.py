@@ -27,12 +27,12 @@ def nextQuestion():
   global quizCounter
   quizCounter += 1
   global quizQuestionsNotAsked
-  randomNumber = random.choice(quizQuestionsNotAsked) #temp value for testing - WIP change number to num of q's available
-  quizQuestionsNotAsked.pop(randomNumber)
+  randomedNumber = random.choice(quizQuestionsNotAsked) #temp value for testing - WIP change number to num of q's available
+  quizQuestionsNotAsked.pop(randomedNumber)
   if quizType == "Uninitialized":
     return ["No quiz type started. write !quiz <type> to start one"]
-  nextQuestion[0] = db[quizType][randomNumber]
-  nextQuestion[1] = db[(quizType)+"Answer"][randomNumber]
+  nextQuestion[0] = db[quizType][randomedNumber]
+  nextQuestion[1] = db[(quizType)+"Answer"][randomedNumber]
   return nextQuestion
 
 def addToQuiz(question, answer):
@@ -59,7 +59,7 @@ def removeFromQuiz(messageContent):
   try:
     quizTypeAnswers = quizType + "Answers"
     db[quizType].pop(number)
-    db[quizTypeAnswers].append(number)
+    db[quizTypeAnswers].pop(number)
     return ("Question has been removed as a question and as the answer to the quiz of " + (quizType))
   except Exception:
     return ("Error removing question from Quiz.")

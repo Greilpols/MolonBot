@@ -12,7 +12,7 @@ def botTiming(messageContent, author): #'!timer' or '!reminder' or '!schedule'
     print(datetime.datetime.now())
     try:
       sendToOther = splitLine[2] #for @here
-      [2, ("Timer has been placed for " + str(timerLength) + " seconds"), sendToOther, timerLength]
+      return([2, ("Timer has been placed for " + str(timerLength) + " seconds"), sendToOther, timerLength])
     except Exception:
       return [2, ("Timer has been placed for " + str(timerLength) + " seconds"), str(author).capitalize(), timerLength]
   except ValueError:

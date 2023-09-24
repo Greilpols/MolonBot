@@ -97,7 +97,6 @@ async def on_message(message):
 
   elif message.content.startswith('!timer') or message.content.startswith('!reminder') or message.content.startswith('!schedule'): # do we just thread the whole thing? Seems asyncio is the way to go!
     timeResponse = timeAlarmReminder.botTiming(message.content, message.author)
-    test12334 = timeResponse[0]
     #figure out why switches refuse to work here
 #timeresponse = [enum, text, pokes, timedelay]
     if timeResponse[0] == 1: #some error

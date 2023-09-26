@@ -8,7 +8,6 @@ def botTiming(messageContent, author): #'!timer' or '!reminder' or '!schedule'
     timerLength = int(splitLine[1])
     if timerLength > 301 or timerLength < 1:
       return [1, "Error. Timer must be of appropriate length. (1-300s)"]
-    #fix to be able to choose target
     print(datetime.datetime.now())
     try:
       sendToOther = splitLine[2] #for @here

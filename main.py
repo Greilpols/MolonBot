@@ -5,6 +5,7 @@ import json
 import time
 import threading
 import asyncio
+import datetime
 
 import info
 import suggestions
@@ -18,6 +19,8 @@ from keep_alive import keep_alive
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
+
+messageTime = 230000
 
 @client.event
 async def on_ready():
@@ -107,6 +110,14 @@ async def on_message(message):
       await message.channel.send(timeAlarmReminder.timerPoke(timeResponse[2]))
     else:
       await message.channel.send("Something went very wrong. Timer sadly not working at the moment.")
+
+#testing sending automated timed messages in channel
+now = datetime.datetime.now()
+current_time = now.strftime("%H:%M:%S") # H - hour, M- minute, S - second
+if current_time == "20:00:00":
+  print(datetime.datetime.now())
+  print("Current Time =", current_time)
+  #remove print, add an automated message
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

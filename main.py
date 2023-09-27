@@ -111,6 +111,12 @@ async def on_message(message):
     else:
       await message.channel.send("Something went very wrong. Timer sadly not working at the moment.")
 
+  elif message.content.startswith('!temptimertesting'):
+    with open("dailyTimer.txt", "a") as f:
+      f.write(str(datetime.datetime.now()) + " this is a test" "\n")
+    f.close()
+    await message.channel.send('temptimertesting ' + str(datetime.datetime.now()))
+
 #testing sending automated timed messages in channel
 now = datetime.datetime.now()
 current_time = now.strftime("%H:%M:%S") # H - hour, M- minute, S - second
@@ -118,6 +124,10 @@ if current_time == "20:00:00":
   print(datetime.datetime.now())
   print("Current Time =", current_time)
   #remove print, add an automated message
+
+  with open("dailyTimer.txt", "a") as f:
+    f.write(str(datetime.datetime.now()) + "\n")
+  f.close()
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

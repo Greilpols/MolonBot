@@ -6,6 +6,7 @@ import time
 import threading
 import asyncio
 import datetime
+from discord.ext import tasks
 
 import info
 import suggestions
@@ -22,9 +23,12 @@ client = discord.Client(intents=intents)
 
 messageTime = 230000
 
+
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
+  test.start()
+
 
 @client.event
 async def on_message(message):
@@ -98,11 +102,11 @@ async def on_message(message):
     quizResponse = quiz.removeFromQuiz(message.content)
     await message.channel.send(quizResponse)
 
-  elif message.content.startswith('!timer') or message.content.startswith('!reminder') or message.content.startswith('!schedule'): # do we just thread the whole thing? Seems asyncio is the way to go!
+  elif message.content.startswith('!timer') or message.content.startswith('!reminder') or message.content.startswith('!schedule'):  # do we just thread the whole thing? Seems asyncio is the way to go!
     timeResponse = timeAlarmReminder.botTiming(message.content, message.author)
     #figure out why switches refuse to work here
-#timeresponse = [enum, text, pokes, timedelay]
-    if timeResponse[0] == 1: #some error
+    #timeresponse = [enum, text, pokes, timedelay]
+    if timeResponse[0] == 1:  #some error
       await message.channel.send(timeResponse[1])
     elif timeResponse[0] == 2:
       await message.channel.send(timeResponse[1])
@@ -112,22 +116,25 @@ async def on_message(message):
       await message.channel.send("Something went very wrong. Timer sadly not working at the moment.")
 
   elif message.content.startswith('!temptimertesting'):
+    print(datetime.datetime.now())
+    now = datetime.datetime.now()
+    print(now)
+    current_time = now.strftime("%H:%M:%S")
+    print(current_time)
     with open("dailyTimer.txt", "a") as f:
-      f.write(str(datetime.datetime.now()) + " this is a test" "\n")
+      f.write(current_time + " this is a test" + "\n")
     f.close()
     await message.channel.send('temptimertesting ' + str(datetime.datetime.now()))
 
+
 #testing sending automated timed messages in channel
-now = datetime.datetime.now()
-current_time = now.strftime("%H:%M:%S") # H - hour, M- minute, S - second
-if current_time == "20:00:00":
+@tasks.loop(minutes=1)
+async def test():
+  now = datetime.datetime.now()
+  current_time = now.strftime("%H:%M")  # H - hour, M- minute, S - second
   print(datetime.datetime.now())
   print("Current Time =", current_time)
-  #remove print, add an automated message
 
-  with open("dailyTimer.txt", "a") as f:
-    f.write(str(datetime.datetime.now()) + "\n")
-  f.close()
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

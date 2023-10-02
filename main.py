@@ -123,8 +123,11 @@ async def minuteChecker():
   current_time = now.strftime("%H:%M")  # H - hour, M- minute, S - second
   print(datetime.datetime.now())
   print("Current Time =", current_time)
-  if current_time == "13:02":
+  if current_time == "13:33":
     print("ding dong")
+    with open("dailyTimer.txt", "a") as f:
+      f.write(current_time + " this is the minute timer checking in." + "\n")
+    f.close()
 
 @tasks.loop(minutes=60)
 async def hourChecker():
@@ -132,9 +135,11 @@ async def hourChecker():
   current_time = now.strftime("%H")  # H - hour, M- minute, S - second
   print(datetime.datetime.now())
   print("Current Time =", current_time)
-  if current_time == "13":
-    print("The clock is 13 (something)") #this will drift as it starts at different hours - only use for things where which minute of the hour doesn't matter
-
+  if current_time == "15":
+    print("The clock is 15 (something)") #this will drift as it starts at different hours - only use for things where which minute of the hour doesn't matter
+    with open("dailyTimer.txt", "a") as f:
+      f.write(current_time + " this is the hour timer checking in" + "\n")
+    f.close()
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

@@ -116,18 +116,6 @@ async def on_message(message):
     else:
       await message.channel.send("Something went very wrong. Timer sadly not working at the moment.")
 
-  elif message.content.startswith('!temptimertesting'):
-    print(datetime.datetime.now())
-    now = datetime.datetime.now()
-    print(now)
-    current_time = now.strftime("%H:%M:%S")
-    print(current_time)
-    with open("dailyTimer.txt", "a") as f:
-      f.write(current_time + " this is a test" + "\n")
-    f.close()
-    await message.channel.send('temptimertesting ' + str(datetime.datetime.now()))
-
-
 #for timecheckers it uses GMT time, so adjust +3 for local
 @tasks.loop(minutes=1)
 async def minuteChecker():

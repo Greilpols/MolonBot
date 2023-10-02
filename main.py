@@ -27,7 +27,8 @@ messageTime = 230000
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
-  test.start()
+  minuteChecker.start()
+  hourChecker.start()
 
 
 @client.event
@@ -127,13 +128,24 @@ async def on_message(message):
     await message.channel.send('temptimertesting ' + str(datetime.datetime.now()))
 
 
-#testing sending automated timed messages in channel
+#for timecheckers it uses GMT time, so adjust +3 for local
 @tasks.loop(minutes=1)
-async def test():
+async def minuteChecker():
   now = datetime.datetime.now()
   current_time = now.strftime("%H:%M")  # H - hour, M- minute, S - second
   print(datetime.datetime.now())
   print("Current Time =", current_time)
+  if current_time == "13:02":
+    print("ding dong")
+
+@tasks.loop(minutes=60)
+async def hourChecker():
+  now = datetime.datetime.now()
+  current_time = now.strftime("%H")  # H - hour, M- minute, S - second
+  print(datetime.datetime.now())
+  print("Current Time =", current_time)
+  if current_time == "13":
+    print("The clock is 13 (something)") #this will drift as it starts at different hours - only use for things where which minute of the hour doesn't matter
 
 
 keep_alive()
